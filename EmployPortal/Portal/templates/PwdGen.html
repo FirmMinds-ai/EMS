@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %} Department{% endblock title %}
+{% block content %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'mainprofile'%}" style="color: black;"><span><i class="icon-arrow-left"> Back</i></span></a></h3>
+<div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-9 ">
+           <div class="card ">
+           <div class="text-center mb-4 text-info">
+           <h2 >Username and Password Creation Form</h2>
+            {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+           </div>
+           <hr>
+
+<form method="POST" action="{% url 'PassGenratorsubmit' Empdt.id %}">
+{% csrf_token %}
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <label for="Username">Name</label>
+    <input type="text" class="form-control form-control-sm" id="Username" placeholder="Name" name="name" value="{{Empdt.emp_Fname}}" readonly>
+  </div>
+  
+</div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="Username">Username</label>
+      <input type="text" class="form-control form-control-sm" id="Username" placeholder="Username" name="Username" >
+    </div>
+    
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="Password">Password</label>
+      <input type="text" class="form-control form-control-sm" id="Password" placeholder="Password" name="Password" >
+    </div>
+    
+  </div>
+  
+  <button type="submit" class="btn btn-info btn-sm rounded-pill ml-2">Submit</button>
+  <button type="reset" class="btn btn-secondary btn-sm rounded-pill ml-2">Reset</button>
+
+
+</form>
+</div>
+</div>
+</div>
+
+</div>     
+</div>
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

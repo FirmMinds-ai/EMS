@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+ {% load static %} 
+{% block title %} Task History{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'taskstatus' %}" style="color: black;"><span><i class="icon-arrow-left"> Back</i></span></a></h3>
+ <div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-10 ">
+           <div class="card ">
+           <div class="text-center mb-4 text-info">
+           <h2>Task History</h2>
+           </div>
+                <hr/>
+<form> 
+   <div class="form-row">
+   <div class="form-group col-sm-6 flex-column d-flex">
+      <label class="form-control-label px-3">Task Description</label>
+      <input type="text" class="form-control" id="inputPassword4" value="{{task.task_description}}" readonly>
+    </div>
+    <div class="form-group col-sm-6 flex-column d-flex">
+     <label class="form-control-label px-3">Assigned By </label>
+     <input type="text" class="form-control" id="inputAddress2" placeholder="FirstName" value="{{task.assigned_by}}"readonly>
+    </div>
+  <div class="form-group col-sm-6 flex-column d-flex">
+    <label class="form-control-label px-3">Assigned To </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="MiddleName"value="{{task.assigned_to}}"readonly>
+  </div>
+  <div class="form-group col-sm-6 flex-column d-flex">
+    <label class="form-control-label px-3">Assigned Date </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="LastName"value="{{task.assigned_date}}"readonly>
+  </div>
+    <div class="form-group col-sm-6 flex-column d-flex">
+      <label class="form-control-label px-3">Complition Date</label>
+      <input type="email" class="form-control" id="inputEmail4" value="{{task.complition_date}}" readonly>
+    </div>
+    <div class="form-group col-sm-6 flex-column d-flex">
+      <label class="form-control-label px-3">Task Status</label>
+      <input type="email" class="form-control" id="inputEmail4" value="{{task.task_status}}" readonly>
+    </div>
+
+      </div>
+  </form>
+</div>
+</div>
+        
+        </div>
+    </div>
+   </div>
+</div>
+
+<!-- end Address Detail-->
+</div>
+</div>
+
+
+
+
+
+{% endblock content%} 

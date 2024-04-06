@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% block title %} Create Profile{% endblock title %}
+
+{% block content %}
+
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'mainprofile' %}" style="color: black;"><span><i class="icon-arrow-left">
+          Back</i></span></a></h3>
+ <div class="container-fluid px-1 py-3 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 ">
+           <div class="card ">
+           <div class="text-center mb-4 text-info mb-2">
+           <h2>Employee Portal Data Form</h2>
+          {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+           </div>
+           <hr>
+<form method="POST" action="/createprofile/" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="form-row ">
+
+<div class="form-group col-md-6">
+    <label for="description">Employee ID</label>
+    <input type="text" class="form-control form-control-sm" id="empId" placeholder="employee Id" name="empId" Required >
+  </div>
+  <div class="form-group col-md-6">
+    <label for="empFname">Employee Frist Name</label>
+    <input type="text" class="form-control form-control-sm" id="empFname" placeholder="employee First Name" name="empFname"Required >
+    </div>
+
+  <div class="form-group col-md-6">
+    <label for="empLname">Employee Last Name</label>
+    <input type="text" class="form-control form-control-sm" id="empLname" placeholder="Employee Last Name" name="empLname" Required>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="contact">Contact Number</label>
+    <input type="text" class="form-control form-control-sm" id="contact" placeholder="Contact Number" name="contact" Required >
+  </div>
+  <div class="form-group col-md-6">
+    <label for="Email1">Email address</label>
+    <input type="email" class="form-control form-control-sm" id="Email1" placeholder="Enter email" name="email1" Required>
+  </div>
+<div class="form-group col-md-6 ">
+    <label for="pan">PanCard Number</label>
+    <input type="text" class="form-control form-control-sm" id="pan" placeholder="Pancard Number" name="pan" Required>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="addhar">Addhar Number </label>
+    <input type="text" class="form-control form-control-sm" id="addhar" placeholder="Addhar Number" name="addhar" Required>
+  </div>
+    <div class="form-group col-md-6 ">
+    <label for="blood">Blood Group </label>
+    <input type="text" class="form-control form-control-sm" id="blood" placeholder="BloodGroup" name="blood" Required>
+  </div>
+ 
+
+  <div class="form-group col-md-6">
+    <label for="status" name="status" id="status">Employee Designation</label>
+    <select class="form-control form-control-sm" name ="designation" id="designation">
+      
+        <option hidden selected value>--Select an option-- </option>
+        {% for i in desig %}
+        <option name ="designation" >{{i.name}}</option>
+        {% endfor %}
+        
+    </select>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="status" name="status" id="status">Department</label>
+    <select class="form-control form-control-sm" name ="department" id="Department">
+      
+        <option hidden selected value>--Select an option-- </option>
+        {% for i in depart %}
+        <option name ="department" >{{i.name}}</option>
+        {% endfor %}
+        
+    </select>
+  </div>         
+  </div>   
+
+
+<hr>
+      <div class="text-center mb-4 text-info ">
+      
+           <h2>Employee Current Address</h2>       
+      </div>
+<div class="form-row ">
+    <div class="form-group col-md-6 ">
+    <label for="addid">Address ID </label>
+    <input type="text" class="form-control form-control-sm" id="addid" placeholder="Address Id" name="addid" Required>
+  </div>
+  
+  {% comment %} <div class="form-group col-md-6 ">
+    <label for="addType">Address Type </label>
+    <input type="text" class="form-control form-control-sm" id="addType" placeholder="Address Type" name="addType" Required>
+  </div> {% endcomment %}
+
+   <div class="form-group col-md-6">
+    <label for="addType" name="addType" id="addType"> Address Type</label>
+    <select class="form-control form-control-sm" name ="addType" id="addType">
+        <option selected>Select type</option>
+        <option name ="addType" id="status">Current</option>
+        <option name = "addType" id="status">Permanent</option>
+    </select>
+  </div> 
+
+  <div class="form-group col-md-6 ">
+    <label for="addline1">Address Line1 </label>
+    <input type="text" class="form-control form-control-sm" id="addline1" placeholder="Address 1" name="addline1" Required>
+  </div> 
+  <div class="form-group col-md-6 ">
+    <label for="addline2">Address Line2 </label>
+    <input type="text" class="form-control form-control-sm" id="addline2" placeholder="Address 2" name="addline2" Required>
+  </div>  
+   
+  <div class="form-group col-md-6 ">
+    <label for="city">City </label>
+    <input type="text" class="form-control form-control-sm" id="city" placeholder="City" name="city" Required>
+  </div>      
+  <div class="form-group col-md-6 ">
+    <label for="district">District </label>
+    <input type="text" class="form-control form-control-sm" id="district" placeholder="District" name="district" Required>
+  </div> 
+  <div class="form-group col-md-6 ">
+    <label for="state">State </label>
+    <input type="text" class="form-control form-control-sm" id="state" placeholder="State" name="state" Required>
+  </div>      
+  <div class="form-group col-md-6 ">
+    <label for="pincode">PinCode </label>
+    <input type="text" class="form-control form-control-sm" id="pincode" placeholder="PinCode" name="pincode" Required>
+  </div>      
+  
+  <div class="form-group col-md-6 ">
+    <label for="country">Country </label>
+    <input type="text" class="form-control form-control-sm" id="country" placeholder="Country" name="country" Required>
+  </div> 
+</div>
+
+
+<input type="checkbox" 
+                   id="same" 
+                   name="same" 
+                   onchange="addressFunction()" />
+            <label for="same">
+              If same Permanent address select this box.
+          </label>
+
+<hr>
+  <div class="text-center mb-4 text-info ">
+           <h2>Employee Permanent Address</h2>       
+      </div>
+<div class="form-row ">
+    <div class="form-group col-md-6 ">
+    <label for="perm_addid">Address ID </label>
+    <input type="text" class="form-control form-control-sm" id="perm_addid" placeholder="Address Id" name="perm_addid" Required>
+  </div>
+  
+  {% comment %} <div class="form-group col-md-6 ">
+    <label for="perm_addType">Address Type </label>
+    <input type="text" class="form-control form-control-sm" id="perm_addType" placeholder="Address Type" name="perm_addType" Required>
+  </div>  {% endcomment %}
+
+  <div class="form-group col-md-6">
+    <label for="perm_addType" name="perm_addType" id="perm_addType"> Address Type</label>
+    <select class="form-control form-control-sm" name ="perm_addType" id="perm_addType">
+        <option selected>Select type</option>
+        <option name ="perm_addType" id="status">Current</option>
+        <option name = "perm_addType" id="status">Permanent</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6 ">
+    <label for="perm_addline1">Address Line1 </label>
+    <input type="text" class="form-control form-control-sm" id="perm_addline1" placeholder="Address 1" name="perm_addline1" Required>
+  </div> 
+  <div class="form-group col-md-6 ">
+    <label for="perm_addline2">Address Line2 </label>
+    <input type="text" class="form-control form-control-sm" id="perm_addline2" placeholder="Address 2" name="perm_addline2" Required>
+  </div>  
+   
+  <div class="form-group col-md-6 ">
+    <label for="perm_city">City </label>
+    <input type="text" class="form-control form-control-sm" id="perm_city" placeholder="City" name="perm_city" Required>
+  </div>      
+  <div class="form-group col-md-6 ">
+    <label for="perm_district">District </label>
+    <input type="text" class="form-control form-control-sm" id="perm_district" placeholder="District" name="perm_district" Required>
+  </div> 
+  <div class="form-group col-md-6  ">
+    <label for="perm_state">State </label>
+    <input type="text" class="form-control form-control-sm" id="perm_state" placeholder="State" name="perm_state" Required>
+  </div>      
+  <div class="form-group col-md-6 ">
+    <label for="perm_pincode">PinCode </label>
+    <input type="text" class="form-control form-control-sm" id="perm_pincode" placeholder="PinCode" name="perm_pincode" Required>
+  </div>      
+  
+  <div class="form-group col-md-6">
+    <label for="perm_country">Country </label>
+    <input type="text" class="form-control form-control-sm" id="perm_country" placeholder="Country" name="perm_country" Required>
+  </div>
+</div>     
+  <div class="container" >
+       <button type="submit" class="btn btn-info rounded-pill m-l-2 ">Submit</button>
+       <button type="submit" class="btn btn-danger rounded-pill m-2">Cancel</button>
+     </div>
+</div>
+</div>
+</div>
+</div>
+    
+
+     
+</form>
+</div>
+        {% block js %}
+        <script>
+            function addressFunction() {
+                if (document.getElementById(
+                  "same").checked) {
+                    document.getElementById(
+                      "perm_addid").value = 
+                    document.getElementById(
+                      "addid").value;
+                    
+                    document.getElementById(
+                      "perm_addline1").value = 
+                    document.getElementById(
+                      "addline1").value;
+                      document.getElementById(
+                      "perm_addline2").value = 
+                    document.getElementById(
+                      "addline2").value;
+                    
+                    document.getElementById(
+                      "perm_city").value = 
+                    document.getElementById(
+                      "city").value;
+                      document.getElementById(
+                      "perm_district").value = 
+                    document.getElementById(
+                      "district").value;
+                    
+                    document.getElementById(
+                      "perm_state").value = 
+                    document.getElementById(
+                      "state").value;
+                      document.getElementById(
+                      "perm_pincode").value = 
+                    document.getElementById(
+                      "pincode").value;
+                    
+                    document.getElementById(
+                      "perm_country").value = 
+                    document.getElementById(
+                      "country").value;
+                } else {
+                    document.getElementById(
+                      "perm_addid").value = "";
+                    document.getElementById(
+                      "perm_addline1").value = "";
+                    document.getElementById(
+                      "perm_addline2").value = "";
+                    document.getElementById(
+                      "perm_city").value = "";
+                      document.getElementById(
+                      "perm_district").value = "";
+                    document.getElementById(
+                      "perm_state").value = "";
+                      document.getElementById(
+                      "perm_pincode").value = "";
+                    document.getElementById(
+                      "perm_country").value = "";
+                }
+            }
+        </script>
+        {% endblock js %}
+
+
+ 
+    {% endblock content %}

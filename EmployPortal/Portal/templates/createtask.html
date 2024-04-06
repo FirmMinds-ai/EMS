@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %} Tasklist{% endblock title %}
+{% block content %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'taskstatus' %}" style="color: black;"><span><i class="icon-arrow-left"> Back</i></span></a></h3>
+<div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 ">
+           <div class="card ">
+           <div class="text-center mb-4 text-info">
+           <h2 >Employee Task Creation Form</h2>
+            {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+           </div>
+           <hr>
+
+<form method="POST" action="/createtask/">
+{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="description">Task Description</label>
+      <input type="text" class="form-control form-control-sm" id="description" placeholder="description" name="description" >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="assignedBy">Assigned By</label>
+      <input type="text" class="form-control form-control-sm" id="assignedBy" placeholder="assignedBy"name="assignedBy">
+    </div>
+  
+
+  <div class="form-group col-md-6">
+    <label for="assignedTo" name="assignedTo" id="assignedTo">Assigned To</label>
+    <select class="form-control form-control-sm" name ="assignedTo" id="assignedTo">
+      
+        <option hidden selected value>--Select an option-- </option>
+        {% for i in edata %}
+        <option name ="assignedTo" >{{i.emp_Fname}}</option>
+        {% endfor %}
+        
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="assignedDate">assigned Date</label>
+    <input type="date" class="form-control form-control-sm" id="assignedDate" placeholder="assignedDate"name="assignedDate">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="complitionDate">Complition Date</label>
+    <input type="date" class="form-control form-control-sm" id="complitionDate" placeholder="ComplitionDate"name="complitionDate">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="status" name="status" id="status"> Task Status</label>
+    <select class="form-control form-control-sm" name ="status" id="status">
+        <option hidden selected value>Select Status</option>
+        <option name ="status" id="status">Pending</option>
+        <option name = "status" id="status">Completed</option>
+    </select>
+  </div>
+  
+  </div>
+  
+  <button type="submit" class="btn btn-info btn-sm rounded-pill ml-2">Submit</button>
+  <button type="reset" class="btn btn-secondary btn-sm rounded-pill ml-2">Reset</button>
+  
+  {% comment %} <button type="submit" class="btn btn-danger btn-sm rounded-pill ml-2">Cancel</button> {% endcomment %}
+</form>
+</div>
+</div>
+</div>
+
+</div>     
+</div>
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

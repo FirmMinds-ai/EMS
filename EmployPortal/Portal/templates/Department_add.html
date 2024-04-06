@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Department{% endblock title %}
+{% block content %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'Department_list' %}" style="color: black;"><span><i class="icon-arrow-left"> Back</i></span></a></h3>
+<div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-9 ">
+           <div class="card ">
+           <div class="text-center mb-4 text-info">
+           <h2 >Department Creation Form</h2>
+            {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+           </div>
+           <hr>
+
+<form method="POST" action="/Department_add_submit/">
+{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="description">Department Name</label>
+      <input type="text" class="form-control form-control-sm" id="Name" placeholder="Department Name" name="dname" >
+    </div>
+    
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="description">Description</label>
+      <textarea type="text" class="form-control form-control-sm" id="description" placeholder="description" name="description" ></textarea>
+    </div>
+    
+  </div>
+  
+  <button type="submit" class="btn btn-info btn-sm rounded-pill ml-2">Submit</button>
+  <button type="reset" class="btn btn-secondary btn-sm rounded-pill ml-2">Reset</button>
+
+
+</form>
+</div>
+</div>
+</div>
+
+</div>     
+</div>
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

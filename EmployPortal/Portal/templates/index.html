@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %} Daboard{% endblock title %}
+{% block content %}
+
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'taskstatus' %}" style="color: black;"><span><i class="icon-arrow-left">
+          Back</i></span></a></h3>
+<div class="container">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email Address</label>
+      <input type="email" class="form-control" id="inputEmail4" value="{{data.empEmailAdress}}" readonly>
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Employee Id</label>
+      <input type="text" class="form-control" id="inputPassword4" value="{{data.empId}}" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Employee Type</label>
+      <input type="text" class="form-control" id="inputAddress" value="{{data.empType}}" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress2">Employee Designation</label>
+      <input type="text" class="form-control" id="inputAddress2" value="{{data.empDesignation}}" readonly>
+    </div>
+    </div>
+  <div class="form-group">
+    <label for="inputAddress">Employee Status</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 emt" value="{{data.empStatus}}"readonly>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Employee FirstName </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="FirstName" value="{{data.empFirstName}}"readonly>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Employee LastName </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="LastName"value="{{data.empLastName}}"readonly>
+  </div>
+  <div class="form-group">
+      <label for="inputAddress2">Employee Addresses</label>
+      <input type="text" class="form-control" id="inputAddress2" value="{{data.Addresses}}" readonly>
+    </div>
+  <div class="form-group">
+    <label for="inputAddress2">Employee GrossSalary </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"value="{{data.grossSalary}}"readonly>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">cseId</label>
+      <input type="text" class="form-control" id="inputCity"placeholder="City"value="{{data.cseId}}"readonly>
+    </div>
+  </div>
+  </form>
+</div> 
+</div>
+  
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

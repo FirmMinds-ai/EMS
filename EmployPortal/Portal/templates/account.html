@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} Account{% endblock title %}
+{% block content %}
+
+<div class="content-wrapper">
+ 
+
+  <div class="container">
+                    <div class="card-header">
+                        <strong class="card-title">Salary Information</strong>
+                    </div>
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered ">
+                            <thead class="table-info">
+                                <tr>
+                                    <th>Employee Id </th>
+                                    <th>Employee GrossPay</th>
+                                    <th>Employee netPay </th>
+                                    <th>Employee basic</th>
+                                    <th>Employee da</th>
+                                    <th>Employee hra</th>
+                                    <th>Employee gratuity</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>{{data.empId}}</td>
+                                    <td>{{data.grossPay}}</td>
+                                    <td>{{data.netPay}}</td>
+                                    <td>{{data.basic}}</td>
+                                    <td>{{data.da}}</td>
+                                    <td>{{data.hra}}</td>
+                                    <td>{{data.gratuity}}</td>
+                                    
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                        
+                    
+</div>
+
+</form> 
+
+</div>
+
+
+  {% comment %} <div class="form-row">
+    <div class="form-group col-md-6">
+     <label for="inputAddress2">Employee Id </label>
+     <input type="text" class="form-control" id="inputAddress2" placeholder="Employee Id" value="{{data.empId}}"readonly>
+    </div>
+    <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee GrossPay </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"value="{{data.grossPay}}"readonly>
+  </div>
+ <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee netPay </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"value="{{data.netPay}}"readonly>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee basic</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"value="{{data.basic}}"readonly>
+  </div>
+    <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee da</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"value="{{data.da}}"readonly>
+  </div>
+    
+  <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee hra </label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"value="{{data.hra}}"readonly>
+  </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress2">Employee gratuity</label>
+      <input type="text" class="form-control" id="inputAddress2"placeholder="Apartment, studio, or floor" value="{{data.gratuity}}" readonly>
+    </div>
+  </div>
+  </form> {% endcomment %}
+
+{% endblock content %}
+{% block js %}
+
+{% endblock js %}

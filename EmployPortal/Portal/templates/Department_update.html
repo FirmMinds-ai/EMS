@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %} Update Profile{% endblock title %}
+{% block content %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'Department_list' %}" style="color: black;"><span><i class="icon-arrow-left">
+          Back</i></span></a></h3>
+  <div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-11 ">
+        <div class="card ">
+          <div class="text-center mb-4 text-info">
+            <h2>Update Task List</h2>
+            {% if messages %}
+            <!-- <ul class="alert-warning"> -->
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+              {% if message.tags %} {% endif %}{{ message }}
+            </div>
+            {% endfor %}
+            <!-- </ul> -->
+            {% endif %}
+
+          </div>
+
+          <hr />
+          <form method="POST" action="{% url 'Department_update_submit' dept.id %}">
+            {% csrf_token %}
+            
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                      <label for="description">Department Name</label>
+                      <input type="text" class="form-control form-control-sm" value="{{dept.name}}" id="Name" placeholder="Department Name" name="dname" readonly>
+                    </div>
+                    
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-8">
+                      <label for="description">Description</label>
+                      <textarea type="text" class="form-control form-control-sm" id="description" placeholder="description" name="description" >{{dept.description}}</textarea>
+                    </div>
+                    
+                  </div>
+
+                <button type="submit" class="btn btn-info mt-2 ">Update</button>
+
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

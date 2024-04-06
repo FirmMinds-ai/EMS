@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %} Update Profile{% endblock title %}
+{% block content %}
+
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'mainprofile' %}" style="color: black;"><span><i class="icon-arrow-left">
+          Back</i></span></a></h3>
+<div class="container-fluid px-1  mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 ">
+           <div class="card ">
+           <div class="text-center mb-4 text-info">
+           <h2>Update Employee Data</h2>
+           </div>
+                
+                <hr/>
+      <form method="POST" action="{% url 'edit' emp.id %}">
+      
+      {% csrf_token %}
+<div class="form-row">
+    <div class="form-group col-md-6 ">
+     <label for="inputAddress2">Employee FirstName </label>
+     <input type="text" class="form-control form-control-sm" id="emp_first_name" name="emp_first_name" placeholder="FirstName" value="{{emp.emp_Fname}}">
+    </div>
+  <div class="form-group col-md-6 ">
+    <label for="inputAddress2">Employee LastName </label>
+    <input type="text" class="form-control form-control-sm" id="emp_last_name" name="emp_last_name" placeholder="LastName"value="{{emp.emp_Lname}}">
+  </div>
+    <div class="form-group col-md-6 ">
+      <label for="inputEmail4">Email Address</label>
+      <input type="email" class="form-control form-control-sm" id="email_add" name="email_add" placeholder="Employee Email"value="{{emp.email}}">
+    </div>
+  
+    <div class="form-group col-md-6 ">
+      <label for="emp_id">Employee Id</label>
+      <input type="text" class="form-control form-control-sm" id="emp_id" name="emp_id" placeholder="Employee Id" value="{{emp.emp_id}}" >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress2">Employee Designation</label>
+      <select class="form-control form-control-sm" name ="designation" id="designation">
+      
+        <option hidden selected>{{emp.designation}}</option>
+        {% for i in desig %}
+        <option name ="designation" >{{i.name}}</option>
+        {% endfor %}
+        
+    </select>
+    </div>
+
+  
+  <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee ContactNumber </label>
+    <input type="text" class="form-control form-control-sm" id="contact_no" name="contact_no" placeholder="Employee ContactNumber"value="{{emp.contact_no}}">
+  </div>
+  <div class="form-group col-md-6 mb-1">
+    <label for="inputAddress2">Employee PanCard Number </label>
+    <input type="text" class="form-control form-control-sm" id="pancard_no" name="pancard_no" placeholder="Employee Pancard"value="{{emp.pancard_no}}">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputAddress2">Employee Addhar Number </label>
+    <input type="text" class="form-control form-control-sm" id="adhaar_no" name="adhaar_no" placeholder="Employee Adhaar"value="{{emp.adhaar_no}}">
+  </div>
+  
+    <div class="form-group col-md-6 ">
+      <label for="blood_gruop">Employee BloodGroup</label>
+      <input type="text" class="form-control form-control-sm" id="blood_group" name="blood_group" placeholder="Employee BloodGroup" value="{{emp.blood_gruop}}">
+    </div>
+    <div class="form-group col-md-6 ">
+      <label for="designation">Department </label>
+      <select class="form-control form-control-sm" name ="department" id="Department">
+      
+        <option hidden selected>{{emp.department}}</option>
+        {% for i in depart %}
+        <option name ="department" >{{i.name}}</option>
+        {% endfor %}
+        
+    </select>
+    </div>
+  </div>
+
+           
+  </div>
+      
+<div>
+  <button type="submit" class="btn btn-info mt-2 ">Update Employee</button>
+  <button type="submit" class="btn btn-primary mt-2 ml-2" href="/mainprofile/">Back</button>
+</div>
+
+
+    
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

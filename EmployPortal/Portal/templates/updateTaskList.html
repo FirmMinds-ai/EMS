@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block title %} Update Profile{% endblock title %}
+{% block content %}
+{% if role == 'admin' %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'taskstatus' %}" style="color: black;"><span><i class="icon-arrow-left">
+          Back</i></span></a></h3>
+  <div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-11 ">
+        <div class="card ">
+          <div class="text-center mb-4 text-info">
+            <h2>Update Task List</h2>
+            {% if messages %}
+            <!-- <ul class="alert-warning"> -->
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+              {% if message.tags %} {% endif %}{{ message }}
+            </div>
+            {% endfor %}
+            <!-- </ul> -->
+            {% endif %}
+
+          </div>
+
+          <hr />
+          <form method="POST" action="{% url 'edittask' task.id %}">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6 ">
+                <label for="task_description">Task Description </label>
+                <input type="text" class="form-control form-control-sm" id="task_description" name="task_description"
+                  placeholder="task_description" value="{{task.task_description}}">
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="assigned_by">Assigned By </label>
+                <input type="text" class="form-control form-control-sm" id="assigned_by" name="assigned_by"
+                  placeholder="assigned by" value="{{task.assigned_by}}" readonly>
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="assigned_to">Assigned To </label>
+                
+                  <select class="form-control form-control-sm" name ="assigned_to" id="assigned_to">
+      
+                    <option hidden selected>{{task.assigned_to}}</option>
+                    {% for i in edata %}
+                    <option name ="assigned_to" >{{i.emp_Fname}}</option>
+                    {% endfor %}
+                    
+                </select>
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="assigned_date">Assigned Date</label>
+                <input type="text" class="form-control form-control-sm" id="assigned_date" name="assigned_date"
+                  value="{{task.assigned_date}}" readonly>
+              </div>
+
+              <div class="form-group col-md-6 ">
+                <label for="complition_date">Complition Date</label>
+                <input type="text" class="form-control form-control-sm" id="complition_date" name="complition_date"
+                  placeholder="YYYY-MM-DD" value="{{task.complition_date}}" readonly>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="status" name="status" id="status"> Task Status</label>
+                <select class="form-control form-control-sm" name="status" id="status">
+                  <option hidden selected>{{task.task_status}}</option>
+                  <option name="status" id="status">Pending</option>
+                  <option name="status" id="status">Completed</option>
+                </select>
+              </div>
+
+              <div>
+                <button type="submit" class="btn btn-info mt-2 ">Update Employee</button>
+
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="content-wrapper">
+  <h3 class="card-title mb-3"><a href="{% url 'taskstatus' %}" style="color: black;"><span><i class="icon-arrow-left">
+          Back</i></span></a></h3>
+  <div class="container-fluid px-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-11 ">
+        <div class="card ">
+          <div class="text-center mb-4 text-info">
+            <h2>Update Task List</h2>
+            {% if messages %}
+            <!-- <ul class="alert-warning"> -->
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+              {% if message.tags %} {% endif %}{{ message }}
+            </div>
+            {% endfor %}
+            <!-- </ul> -->
+            {% endif %}
+
+          </div>
+
+          <hr />
+          <form method="POST" action="{% url 'edittask' task.id %}">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6 ">
+                <label for="task_description">Task Description </label>
+                <input type="text" class="form-control form-control-sm" id="task_description" name="task_description"
+                  placeholder="task_description" value="{{task.task_description}}" readonly>
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="assigned_by">Assigned By </label>
+                <input type="text" class="form-control form-control-sm" id="assigned_by" name="assigned_by"
+                  placeholder="assigned by" value="{{task.assigned_by}}" readonly>
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="assigned_to">Assigned To </label>
+                <input type="text" class="form-control form-control-sm" id="assigned_to" name="assigned_to"
+                  placeholder="assigned by" value="{{task.assigned_to}}" readonly>
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="assigned_date">Assigned Date</label>
+                <input type="text" class="form-control form-control-sm" id="assigned_date" name="assigned_date"
+                  value="{{task.assigned_date}}" readonly>
+              </div>
+
+              <div class="form-group col-md-6 ">
+                <label for="complition_date">Complition Date</label>
+                <input type="text" class="form-control form-control-sm" id="complition_date" name="complition_date"
+                  placeholder="YYYY-MM-DD" value="{{task.complition_date}}" readonly>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="status" name="status" id="status"> Task Status</label>
+                <select class="form-control form-control-sm" name="status" id="status">
+                  <option hidden selected>{{task.task_status}}</option>
+                  <option name="status" id="status">Pending</option>
+                  <option name="status" id="status">Completed</option>
+                </select>
+              </div>
+
+              <div>
+                <button type="submit" class="btn btn-info mt-2 ">Update Employee</button>
+
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock content %}
